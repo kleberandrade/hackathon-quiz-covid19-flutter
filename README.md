@@ -2,20 +2,6 @@
 
 Project of a quiz created for the COVID-19 Global Hackathon 1.0
 
-## Screenshots
-
-<p align="center">
-    <img src="https://cdn-images-1.medium.com/max/1200/1*YK7Lq0v7AwL1lI5asHEUIw.png" width="250"/>
-    <img src="https://cdn-images-1.medium.com/max/1200/1*G7C9CVYGEBF-2QCbRserHQ.png" width="250"/>
-    <img src="https://cdn-images-1.medium.com/max/1200/1*0C_udoJc62aoJUhrjP24kw.png" width="250"/>
-</p>
-
-<p align="center">
-    <img src="https://cdn-images-1.medium.com/max/1200/1*bgBSVu-EHAIFQcnYW2L7UA.png" width="250"/>
-    <img src="https://cdn-images-1.medium.com/max/1200/1*i4JjNPZ0EL1yRjcPBchhog.png" width="250"/>
-    <img src="https://cdn-images-1.medium.com/max/1200/1*5Cp4au8kj0Hedp46LwuiMw.png" width="250"/>
-</p>
-
 ## License
 
     Copyright 2020 Kleber de Oliveira Andrade
