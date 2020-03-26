@@ -1,26 +1,37 @@
 import 'dart:math';
 
+import 'package:devicelocale/devicelocale.dart';
 import 'package:quiz_covid19_hackathon/models/question.dart';
 import 'package:quiz_covid19_hackathon/services/quiz_api.dart';
 
 class QuizController {
-  List<Question> _questionBank;
+  final _random = new Random();
 
-  Random _random = new Random();
+  List<Question> _questionBank;
   int questionIndex = 0;
   bool _shiftAnswer;
-  int hitNumber = 0;
+  List<int> answers;
+  int hitNumber;
+  String locale;
 
   int get questionsNumber => _questionBank.length;
   Question get question => _questionBank[questionIndex];
 
   Future<void> initialize() async {
-    questionIndex = 0;
-    hitNumber = 0;
+    locale = await Devicelocale.currentLocale;
     _questionBank = await QuizApi.fetch();
-    print('Number of questions: ${_questionBank.length}');
     _questionBank.shuffle();
     _shiftAnswer = _random.nextBool();
+    questionIndex = 0;
+    hitNumber = 0;
+    answers = new List<int>(questionsNumber);
+    answers.fillRange(0, questionsNumber, 2);
+    print(questionsNumber);
+    print(answers);
+  }
+
+  bool isLastQuestion() {
+    return questionIndex == questionsNumber - 1;
   }
 
   void nextQuestion() {
@@ -46,7 +57,8 @@ class QuizController {
 
   bool correctAnswer(String answer) {
     var correct = _questionBank[questionIndex].answer1 == answer;
-    hitNumber = hitNumber + (correct ? 1 : 0);
+    answers[questionIndex] = correct ? 1 : 0;
+    hitNumber += correct ? 1 : 0;
     return correct;
   }
 }

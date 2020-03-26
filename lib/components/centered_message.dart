@@ -24,7 +24,7 @@ class CenteredMessage extends StatelessWidget {
             child: Icon(
               icon,
               size: iconSize,
-              color: Colors.black26,
+              color: Colors.white38,
             ),
             visible: icon != null,
           ),
@@ -35,7 +35,7 @@ class CenteredMessage extends StatelessWidget {
               style: TextStyle(
                 fontSize: fontSize,
                 fontWeight: FontWeight.w500,
-                color: Colors.black26,
+                color: Colors.white38,
               ),
             ),
           ),

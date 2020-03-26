@@ -22,7 +22,7 @@ class CenteredCircularProgress extends StatelessWidget {
             height: loadingSize,
             width: loadingSize,
             child: CircularProgressIndicator(
-              backgroundColor: Colors.white30,
+              backgroundColor: Colors.white38,
             ),
           ),
           Padding(
@@ -30,7 +30,7 @@ class CenteredCircularProgress extends StatelessWidget {
             child: Text(
               message,
               style: TextStyle(
-                  color: Colors.white30,
+                  color: Colors.white38,
                   fontSize: fontSize,
                   fontWeight: FontWeight.w300),
             ),
