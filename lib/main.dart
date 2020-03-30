@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:internationalization/internationalization.dart';
 import 'package:quiz_covid19_hackathon/pages/quiz_page.dart';
 
-void main() => runApp(MyApp());
+import 'pages/quiz_page.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Internationalization.loadConfigurations();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -13,6 +21,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: QuizPage(),
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        Internationalization.delegate,
+      ],
+      supportedLocales: suportedLocales,
     );
   }
 }

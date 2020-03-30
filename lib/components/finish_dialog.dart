@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:internationalization/internationalization.dart';
 import 'package:quiz_covid19_hackathon/pages/quiz_page.dart';
 import 'package:share/share.dart';
 
@@ -29,11 +30,12 @@ class FinishDialog {
             ),
           ),
           content: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'Parabéns',
+                Strings.of(context).valueOf("congratulations"),
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -42,30 +44,30 @@ class FinishDialog {
               ),
               const SizedBox(height: 8),
               Text(
-                'Você acertou $hitNumber de $totalQuestion!',
+                Strings.of(context)
+                    .valueOf("win_text")
+                    .replaceAll("<HIT>", hitNumber.toString())
+                    .replaceAll("<TOTAL>", totalQuestion.toString()),
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
               ),
-              Text(
-                'Que tal tentar mais uma vez? Quem sabe você consegue acertar todas na próxima!',
-                style: TextStyle(
-                  color: Colors.white70,
-                ),
-              ),
             ],
           ),
           actions: [
             FlatButton(
-              child: const Text('COMPARTILHAR'),
+              child: Text(Strings.of(context).valueOf("share").toUpperCase()),
               onPressed: () {
-                Share.share('Quiz COVID-29. Você acertou $hitNumber de 10!');
+                Share.share(Strings.of(context)
+                    .valueOf("win_share_text")
+                    .replaceAll("<HIT>", hitNumber.toString())
+                    .replaceAll("<TOTAL>", totalQuestion.toString()));
               },
             ),
             FlatButton(
-              child: const Text('JOGAR NOVAMENTE'),
+              child: Text(Strings.of(context).valueOf("restart").toUpperCase()),
               onPressed: () {
                 Navigator.push(
                   context,
@@ -74,7 +76,7 @@ class FinishDialog {
               },
             ),
             FlatButton(
-              child: const Text('SAIR'),
+              child: Text(Strings.of(context).valueOf("quit").toUpperCase()),
               onPressed: () {
                 SystemNavigator.pop();
               },

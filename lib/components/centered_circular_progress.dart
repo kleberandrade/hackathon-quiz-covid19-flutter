@@ -6,7 +6,7 @@ class CenteredCircularProgress extends StatelessWidget {
   final double fontSize;
 
   CenteredCircularProgress({
-    this.message = 'Carregando',
+    this.message,
     this.loadingSize = 64.0,
     this.fontSize = 14.0,
   });

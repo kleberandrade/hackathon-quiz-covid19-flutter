@@ -1,13 +1,14 @@
 import 'dart:convert';
-
+import 'package:flutter_device_locale/flutter_device_locale.dart';
 import 'package:http/http.dart' as http;
 import 'package:quiz_covid19_hackathon/models/question.dart';
 
 class QuizApi {
   static Future<List<Question>> fetch() async {
     try {
-      var url = 'https://script.google.com/macros/s/AKfycbzOF2QyYBKdLfs00eRvhkGsupKHayTG75CTeTSWkgAOp1PuAKg8/exec';
-      var response = await http.get(url);
+      var url = 'https://script.google.com/macros/s/AKfycbwY-BD43v1kB77-jHhYqDsdq1vTwuSxbzhJ1pgxkbslxBX3YW3H/exec';
+      var locale = await DeviceLocale.getCurrentLocale();
+      var response = await http.get(url + '?locale=${locale.languageCode}');
 
       if (response.statusCode == 200) {
         var data = json.decode(response.body);

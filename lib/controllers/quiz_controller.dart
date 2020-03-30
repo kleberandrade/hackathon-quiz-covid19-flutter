@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:devicelocale/devicelocale.dart';
 import 'package:quiz_covid19_hackathon/models/question.dart';
 import 'package:quiz_covid19_hackathon/services/quiz_api.dart';
 
@@ -18,7 +17,6 @@ class QuizController {
   Question get question => _questionBank[questionIndex];
 
   Future<void> initialize() async {
-    locale = await Devicelocale.currentLocale;
     _questionBank = await QuizApi.fetch();
     _questionBank.shuffle();
     _shiftAnswer = _random.nextBool();

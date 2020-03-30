@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:internationalization/internationalization.dart';
 import 'package:quiz_covid19_hackathon/models/question.dart';
 
 class ResultDialog {
@@ -40,7 +41,9 @@ class ResultDialog {
               ),
               const SizedBox(height: 8),
               Text(
-                correct ? 'Você acertou!' : 'Você errou! O correto é:',
+                correct
+                    ? Strings.of(context).valueOf("you_right")
+                    : Strings.of(context).valueOf("you_missed"),
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
@@ -57,7 +60,7 @@ class ResultDialog {
           ),
           actions: [
             FlatButton(
-              child: const Text('PRÓXIMO'),
+              child: Text(Strings.of(context).valueOf("next").toUpperCase()),
               onPressed: () {
                 Navigator.of(context).pop();
                 onNext();

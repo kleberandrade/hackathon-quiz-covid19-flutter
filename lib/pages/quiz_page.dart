@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:internationalization/internationalization.dart';
 import 'package:quiz_covid19_hackathon/components/centered_circular_progress.dart';
 import 'package:quiz_covid19_hackathon/components/centered_message.dart';
 import 'package:quiz_covid19_hackathon/components/finish_dialog.dart';
@@ -9,6 +10,8 @@ import 'package:quiz_covid19_hackathon/components/result_dialog.dart';
 import 'package:quiz_covid19_hackathon/controllers/quiz_controller.dart';
 
 class QuizPage extends StatefulWidget {
+  static const String routePage = '/quiz';
+
   @override
   _QuizPageState createState() => _QuizPageState();
 }
@@ -51,11 +54,14 @@ class _QuizPageState extends State<QuizPage> {
   }
 
   _buildQuiz() {
-    if (_loading) return CenteredCircularProgress();
+    if (_loading)
+      return CenteredCircularProgress(
+        message: Strings.of(context).valueOf("loading"),
+      );
 
     if (_controller.questionsNumber == 0)
       return CenteredMessage(
-        'Sem questões',
+        Strings.of(context).valueOf("zero_question"),
         icon: Icons.warning,
       );
 
